@@ -19,7 +19,7 @@ const toDoTasks = getLocalStorage();
 const toDoList = document.querySelector('.toDoContainer');
 
 const addTask = (toDoListArray, task) => {
-  toDoListArray.push({ task, id: toDoListArray.length + 1 });
+  toDoListArray.push({ task, completed: false, id: toDoListArray.length + 1 });
 };
 
 const renderToDoList = (toDoListArray) => {
