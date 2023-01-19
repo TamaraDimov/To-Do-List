@@ -34,11 +34,13 @@ const renderToDoList = (toDoListArray) => {
     const toDoCheckbox = document.createElement('input');
     toDoCheckbox.classList.add('toDoContainer-li-checkbox');
     toDoCheckbox.type = 'checkbox';
+    toDoCheckbox.checked = toDo.completed;
     toDoItem.appendChild(toDoCheckbox);
 
     const toDoText = document.createElement('input');
     toDoText.classList.add('toDoContainer-li-text');
     toDoText.value = toDo.task;
+    // toDoText.disabled = true;
     toDoItem.appendChild(toDoText);
 
     if (toDo.completed) {
@@ -54,10 +56,22 @@ const renderToDoList = (toDoListArray) => {
   });
 };
 
-const editTask = (e) => {
+const editTask = (e, toDoListArray) => {
   const clickedTask = e.target.closest('.toDoContainer-li-text');
   clickedTask.disabled = false;
   clickedTask.focus();
+  const taskText = clickedTask.value;
+  clickedTask.addEventListener('keypress', () => {
+    if (clickedTask.value !== '') {
+      const taskIndex = toDoListArray.findIndex(
+        (task) => task.task === taskText,
+      );
+      toDoListArray[taskIndex].task = clickedTask.value;
+      clickedTask.disabled = true;
+      updateLocalStorage(toDoListArray);
+      renderToDoList(toDoListArray);
+    }
+  });
 };
 
 const deleteTask = (e, toDoListArray) => {
@@ -113,7 +127,7 @@ todoList.addEventListener('click', (e) => {
   }
 });
 
-todoList.addEventListener('dblclick', (e) => {
+todoList.addEventListener('click', (e) => {
   if (e.target.closest('.toDoContainer-li-text')) {
     editTask(e, toDoTasks);
   }
