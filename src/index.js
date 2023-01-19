@@ -61,8 +61,8 @@ const editTask = (e, toDoListArray) => {
   clickedTask.disabled = false;
   clickedTask.focus();
   const taskText = clickedTask.value;
-  clickedTask.addEventListener('keypress', () => {
-    if (clickedTask.value !== '') {
+  clickedTask.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && clickedTask.value !== '') {
       const taskIndex = toDoListArray.findIndex(
         (task) => task.task === taskText,
       );
