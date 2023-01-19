@@ -54,18 +54,17 @@ const renderToDoList = (toDoListArray) => {
   });
 };
 
-const editTask = (e, toDoListArray) => {
+const editTask = (e) => {
   const clickedTask = e.target.closest('.toDoContainer-li-text');
   clickedTask.disabled = false;
   clickedTask.focus();
-  const taskText = clickedTask.value;
 };
 
 const deleteTask = (e, toDoListArray) => {
   const clickedCross = e.target.closest('.trash-can');
   const clickedTask = clickedCross.previousElementSibling;
   const taskIndex = toDoListArray.findIndex(
-    (task) => task.task === clickedTask.value
+    (task) => task.task === clickedTask.value,
   );
   toDoListArray.splice(taskIndex, 1);
   toDoListArray.forEach((task, index) => {
@@ -79,7 +78,7 @@ const markTask = (e, toDoListArray) => {
   const clickedCheckbox = e.target.closest('.toDoContainer-li-checkbox');
   const clickedTask = clickedCheckbox.nextElementSibling;
   const taskIndex = toDoListArray.findIndex(
-    (task) => task.task === clickedTask.value
+    (task) => task.task === clickedTask.value,
   );
   toDoListArray[taskIndex].completed = !toDoListArray[taskIndex].completed;
   updateLocalStorage(toDoListArray);
@@ -88,7 +87,6 @@ const markTask = (e, toDoListArray) => {
 
 const input = document.querySelector('.inputField');
 const todoList = document.querySelector('.toDoContainer');
-const clearCompletedBtn = document.querySelector('.clearbtn');
 const addTaskBtn = document.querySelector('.clearbtn');
 
 input.addEventListener('keypress', (e) => {
