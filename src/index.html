@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      src="https://kit.fontawesome.com/be8db3d534.js"
-      crossorigin="anonymous"
-    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do List</title>
   </head>
   <body>
-    <main>
-      <div class="title">
-        <p>Today's To Do</p>
-        <i class="fa-solid fa-arrows-rotate"></i>
-      </div>
-      <div class="container">
-        <input
-          id="inputField"
-          class="inputField"
-          placeholder="Add to your list..."
-          type="text"
-        />
-        <i
-          id="icon"
-          class="fa-solid fa-arrow-turn-down fa-rotate-90 fa-2xs"
-        ></i>
-      </div>
-
-      <ul id="to-dos" class="toDoContainer"></ul>
-
-      <button class="clearbtn">
-        <span>Clear all completed</span>
-      </button>
+    <main class="main">
+      <section class="toDo_list">
+        <div class="title">
+          <h1 class="toDo_title">Today's To Do</h1>
+        </div>
+        <div class="container">
+          <input
+            type="text"
+            name="task"
+            id="task"
+            class="inputField"
+            placeholder="Add new task"
+          />
+          <button class="insert-btn">Insert</button>
+        </div>
+        <ul class="toDoContainer"></ul>
+        <button class="clearbtn">Clear all completed</button>
+      </section>
     </main>
   </body>
 </html>
