@@ -1,4 +1,4 @@
-import { renderToDoList } from './modules/list.js';
+import { renderToDoList } from './modules/newList.js';
 import toDoTasks from './task.js';
 import './modules/eventListeners.js';
 import './style.css';

@@ -5,7 +5,7 @@ import {
   editTask,
   deleteTask,
   markTask,
-} from './list.js';
+} from './newList.js';
 import { updateLocalStorage } from './storage.js';
 import toDoTasks from '../task.js';
 
@@ -52,6 +52,6 @@ todoList.addEventListener('click', (e) => {
 
 clearCompletedBtn.addEventListener('click', () => {
   const toDoList = clearCompleted(toDoTasks);
-  updateLocalStorage(toDoTasks);
+  updateLocalStorage(toDoList);
   renderToDoList(toDoList);
 });
