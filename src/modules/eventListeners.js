@@ -5,7 +5,7 @@ import {
   editTask,
   deleteTask,
   markTask,
-} from './newList.js';
+} from './lists.js';
 import { updateLocalStorage } from './storage.js';
 import toDoTasks from '../task.js';
 

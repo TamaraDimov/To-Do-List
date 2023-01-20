@@ -6,7 +6,7 @@ export const addTask = (toDoListArray, task) => {
   toDoListArray.push({ task, completed: false, id: toDoListArray.length + 1 });
 };
 
-export const clearCompleted = (toDoListArray, task) => {
+export const clearCompleted = (toDoListArray) => {
   toDoListArray = toDoListArray.filter((task) => task.completed === false);
   toDoListArray.forEach((task, index) => {
     task.id = index + 1;
@@ -38,12 +38,10 @@ export const renderToDoList = (toDoListArray) => {
     if (toDo.completed) {
       toDoText.classList.add('completed');
     }
-
     const crossIcon = document.createElement('span');
     crossIcon.classList.add('trash-can');
     crossIcon.innerHTML = '🗑️';
     toDoItem.appendChild(crossIcon);
-
     toDoList.appendChild(toDoItem);
   });
 };
@@ -65,7 +63,6 @@ export const editTask = (e, toDoListArray) => {
     }
   });
 };
-
 export const deleteTask = (e, toDoListArray) => {
   const clickedCross = e.target.closest('.trash-can');
   const clickedTask = clickedCross.previousElementSibling;
@@ -79,7 +76,6 @@ export const deleteTask = (e, toDoListArray) => {
   updateLocalStorage(toDoListArray);
   renderToDoList(toDoListArray);
 };
-
 export const markTask = (e, toDoListArray) => {
   const clickedCheckbox = e.target.closest('.toDoContainer-li-checkbox');
   const clickedTask = clickedCheckbox.nextElementSibling;
