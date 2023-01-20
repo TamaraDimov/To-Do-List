@@ -75,7 +75,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Coming soon](https://yourdeployedapplicationlink.com)
+- [live_demo_link](https://tamaradimov.github.io/To-Do-List/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
