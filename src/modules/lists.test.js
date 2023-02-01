@@ -2,7 +2,14 @@
  * @jest-environment jsdom
  */
 
-import { addTask, clearCompleted, editTask, deleteTask } from './lists.js';
+import {
+  addTask,
+  clearCompleted,
+  editTask,
+  deleteTask,
+  markTask,
+  renderToDoList,
+} from './lists.js';
 
 document.body.innerHTML = `
 <section class="toDo_list">
@@ -22,13 +29,7 @@ document.body.innerHTML = `
   <ul class="toDoContainer"></ul>
   <button class="clearbtn">Clear all completed</button>
 </section>
-
-// describe('Test', () => {
-  test('Add one item to the list', () => {
-    Lists.showList(tasks, todoEl);
-    const li = todoEl.querySelectorAll('.lists');
-    expect(li).toHaveLength(2);
-  })`;
+})`;
 
 const todoList = document.querySelector('.toDoContainer');
 const tasks = [
@@ -46,14 +47,14 @@ const tasks = [
 
 describe('Test', () => {
   test('Add only one item', () => {
-    lists.showList(tasks, todoList);
+    addTask.showList(tasks, todoList);
     const li = todoList.querySelectorAll('.toDoContainer');
     expect(li).toHaveLength(2);
   });
 
   test('Remove only one item', () => {
-    lists.delList(0, tasks);
-    lists.showList(tasks, todoList);
+    deleteTask.delList(0, tasks);
+    deleteTask.showList(tasks, todoList);
     const li = todoList.querySelectorAll('.toDoContainer');
     expect(li).toHaveLength(1);
   });
