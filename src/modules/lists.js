@@ -14,10 +14,10 @@ export const clearCompleted = (toDoListArray) => {
   return toDoListArray;
 };
 
-export const renderToDoList = (toDoListArray) => {
-  toDoList.innerHTML = '';
+export const renderToDoList = (toDoListArray, ul = toDoList) => {
+  ul.innerHTML = '';
 
-  toDoListArray = getLocalStorage();
+  // toDoListArray = getLocalStorage();
 
   toDoListArray.forEach((toDo) => {
     const toDoItem = document.createElement('li');
@@ -41,7 +41,7 @@ export const renderToDoList = (toDoListArray) => {
     crossIcon.classList.add('trash-can');
     crossIcon.innerHTML = '🗑️';
     toDoItem.appendChild(crossIcon);
-    toDoList.appendChild(toDoItem);
+    ul.appendChild(toDoItem);
   });
 };
 
@@ -63,6 +63,7 @@ export const editTask = (e, toDoListArray) => {
   });
 };
 export const deleteTask = (e, toDoListArray) => {
+  console.log('e', e);
   const clickedCross = e.target.closest('.trash-can');
   const clickedTask = clickedCross.previousElementSibling;
   const taskIndex = toDoListArray.findIndex(

@@ -45,17 +45,34 @@ const tasks = [
   },
 ];
 
+todoList.addEventListener('click', (e) => {
+  if (e.target.closest('.trash-can')) {
+    console.log('triggerd');
+    deleteTask(e, tasks);
+  }
+});
+
 describe('Test', () => {
-  test('Add only one item', () => {
-    addTask.showList(tasks, todoList);
-    const li = todoList.querySelectorAll('.toDoContainer');
-    expect(li).toHaveLength(2);
+  test('Display only Two items on the ul container', () => {
+    renderToDoList(tasks, todoList);
+    const lis = todoList.children;
+    expect(lis).toHaveLength(2);
+  });
+
+  test('Add a new item to todo list', () => {
+    addTask(tasks, 'New Task to make a test');
+    renderToDoList(tasks, todoList);
+    const lis = todoList.children;
+    expect(lis).toHaveLength(3);
   });
 
   test('Remove only one item', () => {
-    deleteTask.delList(0, tasks);
-    deleteTask.showList(tasks, todoList);
-    const li = todoList.querySelectorAll('.toDoContainer');
-    expect(li).toHaveLength(1);
+    // const clickEvent = new Event('click');
+    todoList.click();
+
+    const lis = todoList.children;
+    console.log('lis before delete: ', lis.length);
+    console.log('lis after delete: ', lis.length);
+    expect(lis).toHaveLength(2);
   });
 });
