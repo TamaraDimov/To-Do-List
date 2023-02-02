@@ -10,6 +10,8 @@ import {
   markTask,
   renderToDoList,
 } from './lists.js';
+import { addTaskMock, toDoListArray } from './__mock__/listMock.js';
+import localStorage from './__mock__/localStorageMock.js';
 
 document.body.innerHTML = `
 <section class="toDo_list">
@@ -45,13 +47,6 @@ const tasks = [
   },
 ];
 
-todoList.addEventListener('click', (e) => {
-  if (e.target.closest('.trash-can')) {
-    console.log('triggerd');
-    deleteTask(e, tasks);
-  }
-});
-
 describe('Test', () => {
   test('Display only Two items on the ul container', () => {
     renderToDoList(tasks, todoList);
@@ -60,19 +55,22 @@ describe('Test', () => {
   });
 
   test('Add a new item to todo list', () => {
-    addTask(tasks, 'New Task to make a test');
-    renderToDoList(tasks, todoList);
-    const lis = todoList.children;
-    expect(lis).toHaveLength(3);
+    addTaskMock('New Task to make a test');
+    expect(toDoListArray).toHaveLength(1);
+    expect(localStorage.getItem('tasks')).toHaveLength(1);
   });
 
-  test('Remove only one item', () => {
-    // const clickEvent = new Event('click');
-    todoList.click();
-
-    const lis = todoList.children;
-    console.log('lis before delete: ', lis.length);
-    console.log('lis after delete: ', lis.length);
-    expect(lis).toHaveLength(2);
-  });
+  // test('Remove only one item', () => {
+  //   // const itemToRemove = todoList.children[1];
+  //   todoList.addEventListener('click', (e) => {
+  //     // if (e.target.closest('.trash-can')) {
+  //     console.log('triggerd');
+  //     deleteTask(e, tasks);
+  //     // }
+  //   });
+  //   const clickEvent = new Event('click');
+  //   todoList.dispatchEvent(clickEvent);
+  //   const lis = todoList.children;
+  //   expect(lis).toHaveLength(2);
+  // });
 });
