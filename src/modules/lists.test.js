@@ -5,6 +5,7 @@
 import {
   addTaskMock,
   toDoListArray,
+  editTaskMock,
   deleteTaskMock,
 } from './__mock__/listMock.js';
 import localStorage from './__mock__/localStorageMock.js';
@@ -43,6 +44,12 @@ describe('Test', () => {
     renderToDoListMock(toDoListArray, ul);
     const lis = Array.from(ul.children);
     expect(lis).toHaveLength(1);
+  });
+
+  test('Edit task description', () => {
+    const newValue = 'updated task description';
+    editTaskMock(toDoListArray[0].id, toDoListArray, newValue);
+    expect(toDoListArray[0].description).toEqual(newValue);
   });
 
   test('Remove only one item', () => {

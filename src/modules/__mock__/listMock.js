@@ -14,3 +14,9 @@ export const deleteTaskMock = (taskIndex) => {
   });
   localStorage.setItem('tasks', toDoListArray);
 };
+
+export const editTaskMock = (id, toDoListArray, newValue) => {
+  const taskIndex = toDoListArray.findIndex((task) => task.id === id);
+  toDoListArray[taskIndex].description = newValue;
+  localStorage.setItem('tasks', toDoListArray);
+};
