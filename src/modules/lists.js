@@ -14,8 +14,8 @@ export const clearCompleted = (toDoListArray) => {
   return toDoListArray;
 };
 
-export const renderToDoList = (toDoListArray) => {
-  toDoList.innerHTML = '';
+export const renderToDoList = (toDoListArray, ul = toDoList) => {
+  ul.innerHTML = '';
 
   toDoListArray = getLocalStorage();
 
@@ -32,7 +32,6 @@ export const renderToDoList = (toDoListArray) => {
     const toDoText = document.createElement('input');
     toDoText.classList.add('toDoContainer-li-text');
     toDoText.value = toDo.task;
-    // toDoText.disabled = true;
     toDoItem.appendChild(toDoText);
 
     if (toDo.completed) {
@@ -42,7 +41,7 @@ export const renderToDoList = (toDoListArray) => {
     crossIcon.classList.add('trash-can');
     crossIcon.innerHTML = '🗑️';
     toDoItem.appendChild(crossIcon);
-    toDoList.appendChild(toDoItem);
+    ul.appendChild(toDoItem);
   });
 };
 
